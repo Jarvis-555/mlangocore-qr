@@ -1,379 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="theme-color" content="#7A4E27">
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
 
-    <title>Expo Visitor Registration | Mlango Core</title>
+    <title>
+        Expo Visitor Registration | Mlango Core
+    </title>
+
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        :root {
-            --orange: #F4711E;
-            --orange-dark: #D85F0F;
-            --pine-pale: #EFD9B8;
-            --pine-light: #D9A567;
-            --pine-mid: #B87F44;
-            --pine-deep: #7A4E27;
-            --pine-darkest: #4A2E17;
-            --near-black: #1C140D;
-            --cream: #FBF3E6;
-            --text-muted: #6B4F35;
-            --border-soft: rgba(74, 46, 23, 0.18);
-        }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
             background:
-                repeating-linear-gradient(
-                    100deg,
-                    rgba(255, 255, 255, 0.05) 0px,
-                    rgba(255, 255, 255, 0.05) 2px,
-                    transparent 2px,
-                    transparent 7px
-                ),
-                repeating-linear-gradient(
-                    100deg,
-                    rgba(0, 0, 0, 0.04) 0px,
-                    rgba(0, 0, 0, 0.04) 1px,
-                    transparent 1px,
-                    transparent 12px
-                ),
-                radial-gradient(
-                    circle at 15% 20%,
-                    rgba(74, 46, 23, 0.25),
-                    transparent 40%
-                ),
-                radial-gradient(
-                    circle at 85% 80%,
-                    rgba(74, 46, 23, 0.22),
-                    transparent 45%
-                ),
                 linear-gradient(
-                    160deg,
-                    var(--pine-light) 0%,
-                    var(--pine-mid) 45%,
-                    var(--pine-deep) 100%
-                );
+                    rgba(4, 10, 20, 0.94),
+                    rgba(4, 10, 20, 0.97)
+                ),
+                #07111f;
 
-            color: var(--near-black);
+            color: #ffffff;
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             padding: 25px;
         }
 
+
         .container {
+
             width: 100%;
+
             max-width: 520px;
         }
 
+
         .logo {
+
             text-align: center;
+
             margin-bottom: 25px;
         }
 
-        .logo-mark {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 6px;
-        }
-
-        .logo-mark svg {
-            width: 34px;
-            height: 34px;
-            flex-shrink: 0;
-        }
 
         .logo h1 {
+
             font-size: 30px;
+
             letter-spacing: 3px;
-            font-weight: 800;
-            color: var(--near-black);
+
+            font-weight: 700;
         }
 
-        .logo h1 span {
-            color: var(--orange);
-        }
 
         .logo p {
-            margin-top: 6px;
-            color: var(--pine-darkest);
-            font-size: 12px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+
+            margin-top: 8px;
+
+            color: #aeb8c7;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
         }
+
 
         .card {
-            background: var(--cream);
-            border: 1px solid var(--border-soft);
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+
             border-radius: 18px;
+
             padding: 30px;
-            box-shadow: 0 20px 60px rgba(30, 17, 6, 0.35);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.35);
         }
 
+
         .heading {
+
             text-align: center;
+
             margin-bottom: 25px;
         }
 
+
         .heading h2 {
+
             font-size: 24px;
+
             margin-bottom: 10px;
-            color: var(--near-black);
         }
 
+
         .heading p {
-            color: var(--text-muted);
+
+            color: #b9c2ce;
+
             font-size: 14px;
+
             line-height: 1.6;
         }
 
+
         .form-group {
+
             margin-bottom: 18px;
         }
 
+
         label {
+
             display: block;
+
             margin-bottom: 7px;
+
             font-size: 13px;
-            font-weight: 700;
-            color: var(--near-black);
+
+            font-weight: 600;
+
+            color: #dce3eb;
         }
 
+
         .required {
-            color: var(--orange);
+
+            color: #00c8ff;
         }
+
 
         input,
         select,
         textarea {
+
             width: 100%;
-            padding: 13px 14px;
+
+            padding: 14px;
+
             border-radius: 9px;
-            border: 1px solid var(--border-soft);
-            background: #ffffff;
-            color: var(--near-black);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            background:
+                rgba(0, 0, 0, 0.25);
+
+            color: #ffffff;
+
             font-size: 15px;
+
             outline: none;
+
             transition: 0.2s;
         }
+
 
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: var(--orange);
-            box-shadow: 0 0 0 2px rgba(244, 113, 30, 0.18);
+
+            border-color: #00c8ff;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(0, 200, 255, 0.12);
         }
+
 
         input::placeholder,
         textarea::placeholder {
-            color: #9c8a76;
+
+            color: #7e8998;
         }
 
+
         select {
+
             cursor: pointer;
         }
 
+
         select option {
+
             color: #000000;
+
             background: #ffffff;
         }
 
+
         textarea {
-            min-height: 110px;
+
+            min-height: 120px;
+
             resize: vertical;
         }
 
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 9px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(74, 46, 23, 0.05);
-        }
-
-        .checkbox-item input {
-            width: auto;
-        }
-
-        .checkbox-item label {
-            margin: 0;
-            font-weight: normal;
-            cursor: pointer;
-        }
 
         .submit-btn {
+
             width: 100%;
+
             border: none;
+
             padding: 15px;
+
             margin-top: 8px;
+
             border-radius: 10px;
-            background: var(--orange);
-            color: #ffffff;
+
+            background: #00c8ff;
+
+            color: #04101b;
+
             font-size: 16px;
+
             font-weight: 700;
-            letter-spacing: 0.5px;
+
             cursor: pointer;
+
             transition: 0.2s;
         }
 
+
         .submit-btn:hover {
-            background: var(--orange-dark);
-            transform: translateY(-1px);
+
+            transform:
+                translateY(-1px);
+
+            opacity: 0.92;
         }
 
+
         .submit-btn:disabled {
-            opacity: 0.5;
+
+            opacity: 0.6;
+
             cursor: not-allowed;
+
             transform: none;
         }
 
+
         .privacy {
+
             margin-top: 18px;
+
             text-align: center;
+
             font-size: 11px;
+
             line-height: 1.5;
-            color: var(--text-muted);
+
+            color: #7f8997;
         }
 
+
         .message {
+
             display: none;
+
             text-align: center;
+
             padding: 20px 0;
         }
 
+
         .success-icon {
+
             width: 65px;
+
             height: 65px;
-            margin: 0 auto 20px;
+
+            margin:
+                0 auto 20px;
+
             border-radius: 50%;
-            background: var(--orange);
-            color: #ffffff;
+
+            background: #00c8ff;
+
+            color: #04101b;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             font-size: 30px;
+
             font-weight: bold;
         }
 
+
         .message h2 {
+
             margin-bottom: 12px;
-            color: var(--near-black);
         }
 
+
         .message p {
-            color: var(--text-muted);
+
+            color: #b9c2ce;
+
             line-height: 1.6;
+
             margin-bottom: 25px;
         }
 
+
         .continue-btn {
+
             display: block;
+
             text-decoration: none;
-            background: var(--near-black);
-            color: #ffffff;
+
+            background: #ffffff;
+
+            color: #07111f;
+
             padding: 14px;
+
             border-radius: 9px;
+
             font-weight: 700;
         }
 
-        .continue-btn:hover {
-            background: var(--pine-darkest);
-        }
 
         .error {
-            background: rgba(217, 60, 20, 0.1);
-            border: 1px solid rgba(217, 60, 20, 0.3);
-            color: #9c2c0e;
+
+            background:
+                rgba(255, 70, 70, 0.12);
+
+            border:
+                1px solid
+                rgba(255, 70, 70, 0.3);
+
+            color: #ff9b9b;
+
             padding: 12px;
+
             border-radius: 8px;
+
             margin-bottom: 15px;
+
             display: none;
+
             font-size: 13px;
         }
 
+
         .loading {
+
             display: none;
+
             text-align: center;
+
             margin-top: 15px;
-            color: var(--text-muted);
+
+            color: #9da9b8;
+
             font-size: 13px;
         }
+
 
         @media (max-width: 500px) {
 
             body {
+
                 padding: 15px;
             }
 
+
             .card {
+
                 padding: 22px;
             }
 
-            .checkbox-group {
-                grid-template-columns: 1fr;
-            }
 
             .logo h1 {
+
                 font-size: 25px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
+
+    <!-- MLANGO CORE HEADER -->
 
     <div class="logo">
 
-        <div class="logo-mark">
+        <h1>
+            MLANGO CORE
+        </h1>
 
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="40,8 78,18 78,86 40,96" fill="#F4711E"></polygon>
-                <polygon points="40,8 78,18 66,22 40,15" fill="#D85F0F"></polygon>
-                <circle cx="63" cy="52" r="4.5" fill="#1C140D"></circle>
-                <polygon points="22,20 40,8 40,96 22,84" fill="#1C140D"></polygon>
-            </svg>
-
-            <h1>MLANGO <span>CORE</span></h1>
-
-        </div>
-
-        <p>STRONG BEGINNINGS. START AT THE DOOR.</p>
+        <p>
+            STRONG BEGINNINGS START AT THE DOOR
+        </p>
 
     </div>
 
+
+    <!-- MAIN CARD -->
+
     <div class="card">
 
-        <!-- FORM -->
+
+        <!-- ========================= -->
+        <!-- FORM SECTION               -->
+        <!-- ========================= -->
+
         <div id="formSection">
+
 
             <div class="heading">
 
-                <h2>Expo Visitor Registration</h2>
+                <h2>
+                    Expo Visitor Registration
+                </h2>
 
                 <p>
                     Tell us about yourself and what
@@ -383,51 +476,76 @@
 
             </div>
 
-            <div id="errorMessage" class="error"></div>
+
+            <!-- ERROR -->
+
+            <div
+                id="errorMessage"
+                class="error"
+            ></div>
+
+
+            <!-- FORM -->
 
             <form id="expoForm">
+
+
+                <!-- NAME -->
 
                 <div class="form-group">
 
                     <label>
+
                         Full Name
-                        <span class="required">*</span>
+
+                        <span class="required">
+                            *
+                        </span>
+
                     </label>
 
                     <input
                         type="text"
                         id="name"
                         name="name"
-                        placeholder="Your name"
+                        placeholder="Your Name"
                         required
                     >
 
                 </div>
 
 
+                <!-- EMAIL -->
+
                 <div class="form-group">
 
                     <label>
+
                         Email Address
-                        <span class="required">*</span>
+
+                        <span class="required">
+                            *
+                        </span>
+
                     </label>
 
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="Your email"
+                        placeholder="Your Email"
                         required
                     >
 
                 </div>
 
 
+                <!-- PHONE -->
+
                 <div class="form-group">
 
                     <label>
                         Phone Number
-                    
                     </label>
 
                     <input
@@ -435,17 +553,17 @@
                         id="phone"
                         name="phone"
                         placeholder=""
-                    
                     >
 
                 </div>
 
 
+                <!-- COMPANY -->
+
                 <div class="form-group">
 
                     <label>
                         Company / Organisation
-                        
                     </label>
 
                     <input
@@ -453,20 +571,23 @@
                         id="company"
                         name="company"
                         placeholder="Company or organisation"
-                        
                     >
 
                 </div>
 
 
+                <!-- INTEREST -->
+
                 <div class="form-group">
 
                     <label>
                         What are you interested in?
-                        
                     </label>
 
-                    <select id="interest" name="interest">
+                    <select
+                        id="interest"
+                        name="interest"
+                    >
 
                         <option value="">
                             Select an option
@@ -513,6 +634,7 @@
                 </div>
 
 
+                <!-- SUBMIT -->
 
                 <button
                     type="submit"
@@ -522,6 +644,9 @@
                     SUBMIT & CONTINUE
                 </button>
 
+
+                <!-- LOADING -->
+
                 <div
                     class="loading"
                     id="loading"
@@ -529,110 +654,193 @@
                     Submitting your enquiry...
                 </div>
 
+
+                <!-- PRIVACY -->
+
                 <div class="privacy">
-                    Your information will only be used by Mlango Core
-                    to respond to your enquiry.
+
+                    Your information will only be used
+                    by Mlango Core to respond to your enquiry.
+
                 </div>
+
 
             </form>
 
         </div>
 
 
-        <!-- SUCCESS MESSAGE -->
+        <!-- ========================= -->
+        <!-- SUCCESS SECTION            -->
+        <!-- ========================= -->
 
         <div
             id="successSection"
             class="message"
         >
 
+
             <div class="success-icon">
                 ✓
             </div>
 
+
             <h2>
+
                 Thank You
                 <span id="visitorName"></span>
+
             </h2>
 
+
             <p>
-                Your enquiry has been successfully received.
-                You can now explore Mlango Core's catalogues,
-                services and other information.
+
+                Your enquiry has been successfully
+                received. You can now explore
+                Mlango Core's catalogues, services
+                and other information.
+
             </p>
+
 
             <a
                 href="https://linktr.ee/mlango_core"
                 class="continue-btn"
             >
+
                 CONTINUE TO MLANGO CORE
+
             </a>
 
+
         </div>
+
 
     </div>
 
 </div>
 
 
+
 <script>
 
-    /*
-     * GOOGLE APPS SCRIPT WEB APP URL
-     *
-     * Replace this with your deployed Apps Script URL.
-     */
-    const GOOGLE_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
+
+/* ==========================================
+   GOOGLE APPS SCRIPT URL
+   ==========================================
+
+   Replace this with your actual deployed
+   Google Apps Script Web App URL.
+
+*/
+
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
 
 
-    const form =
-        document.getElementById("expoForm");
 
-    const submitButton =
-        document.getElementById("submitButton");
+/* ==========================================
+   GET HTML ELEMENTS
+   ========================================== */
 
-    const loading =
-        document.getElementById("loading");
+const form =
+    document.getElementById("expoForm");
 
-    const errorMessage =
-        document.getElementById("errorMessage");
+const submitButton =
+    document.getElementById("submitButton");
+
+const loading =
+    document.getElementById("loading");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+const formSection =
+    document.getElementById("formSection");
+
+const successSection =
+    document.getElementById("successSection");
+
+const visitorName =
+    document.getElementById("visitorName");
 
 
-    form.addEventListener("submit", async function(event) {
+
+/* ==========================================
+   FORM SUBMISSION
+   ========================================== */
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        /*
+         * Prevent the browser from
+         * refreshing the page.
+         */
 
         event.preventDefault();
 
 
-        errorMessage.style.display = "none";
+        /*
+         * Clear previous error.
+         */
 
-        submitButton.disabled = true;
+        errorMessage.style.display =
+            "none";
 
-        loading.style.display = "block";
 
+        /*
+         * Disable button.
+         */
+
+        submitButton.disabled =
+            true;
+
+
+        /*
+         * Show loading.
+         */
+
+        loading.style.display =
+            "block";
+
+
+        /*
+         * Collect form information.
+         */
 
         const data = {
 
             name:
-                document.getElementById("name").value.trim(),
+                document
+                    .getElementById("name")
+                    .value
+                    .trim(),
 
             email:
-                document.getElementById("email").value.trim(),
+                document
+                    .getElementById("email")
+                    .value
+                    .trim(),
 
             phone:
-                document.getElementById("phone").value.trim(),
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim(),
 
             company:
-                document.getElementById("company").value.trim(),
+                document
+                    .getElementById("company")
+                    .value
+                    .trim(),
 
             interest:
-                document.getElementById("interest").value,
+                document
+                    .getElementById("interest")
+                    .value,
 
-            requirement:
-                document.getElementById("requirement").value.trim(),
-
-            timeline:
-                document.getElementById("timeline").value,
 
             source:
                 "EXPO QR",
@@ -643,61 +851,155 @@
         };
 
 
+
+        /* ======================================
+           BASIC VALIDATION
+           ====================================== */
+
+        if (!data.name) {
+
+            showError(
+                "Please enter your name."
+            );
+
+            return;
+
+        }
+
+
+        if (!data.email) {
+
+            showError(
+                "Please enter your email address."
+            );
+
+            return;
+
+        }
+
+
+
+        /* ======================================
+           SEND TO GOOGLE APPS SCRIPT
+           ====================================== */
+
         try {
 
+
+            /*
+             * Send information to
+             * Google Apps Script.
+             */
+
             await fetch(
+
                 GOOGLE_SCRIPT_URL,
+
                 {
+
                     method: "POST",
 
                     mode: "no-cors",
 
                     headers: {
+
                         "Content-Type":
                             "application/x-www-form-urlencoded"
+
                     },
 
                     body:
                         new URLSearchParams(data)
+
                 }
+
             );
 
 
             /*
-             * Because no-cors does not allow the browser
-             * to read the response, we assume the request
-             * was sent successfully.
+             * Hide form.
              */
 
-            document.getElementById("formSection")
-                .style.display = "none";
+            formSection.style.display =
+                "none";
 
-            document.getElementById("successSection")
-                .style.display = "block";
 
-            document.getElementById("visitorName")
-                .textContent =
+            /*
+             * Hide loading.
+             */
+
+            loading.style.display =
+                "none";
+
+
+            /*
+             * Display visitor name.
+             */
+
+            visitorName.textContent =
                 ", " + data.name;
 
 
-        } catch (error) {
+            /*
+             * Show success screen.
+             */
 
-            console.error(error);
+            successSection.style.display =
+                "block";
 
-            errorMessage.textContent =
-                "We couldn't submit your information. Please try again.";
-
-            errorMessage.style.display = "block";
-
-            submitButton.disabled = false;
-
-            loading.style.display = "none";
 
         }
 
-    });
+
+        catch (error) {
+
+
+            console.error(
+                "Submission error:",
+                error
+            );
+
+
+            showError(
+                "We couldn't submit your enquiry. Please try again."
+            );
+
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   ERROR FUNCTION
+   ========================================== */
+
+function showError(message) {
+
+
+    errorMessage.textContent =
+        message;
+
+
+    errorMessage.style.display =
+        "block";
+
+
+    submitButton.disabled =
+        false;
+
+
+    loading.style.display =
+        "none";
+
+}
+
 
 </script>
 
+
 </body>
+
 </html>
