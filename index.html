@@ -1,0 +1,870 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#18352A">
+
+    <title>Expo Visitor Registration | Mlango Core</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(42, 78, 61, 0.30),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    rgba(10, 22, 17, 0.96),
+                    rgba(7, 16, 12, 0.98)
+                ),
+                #0a1611;
+
+            color: #ffffff;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        .logo h1 {
+            font-size: 30px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+
+        .logo p {
+            margin-top: 8px;
+
+            color: #b8c9bd;
+
+            font-size: 13px;
+            letter-spacing: 0.8px;
+
+            font-style: italic;
+        }
+
+
+        .card {
+
+            background: rgba(255, 255, 255, 0.055);
+
+            border: 1px solid rgba(188, 213, 195, 0.18);
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+
+        .heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        .heading h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+
+        .heading p {
+            color: #b7c4bb;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #dce5df;
+        }
+
+
+        .required {
+            color: #8fb89f;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(190, 215, 198, 0.18);
+
+            background: rgba(0, 0, 0, 0.28);
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #739b82;
+
+            box-shadow:
+                0 0 0 2px rgba(115, 155, 130, 0.14);
+        }
+
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #7f9186;
+        }
+
+
+        select {
+            cursor: pointer;
+        }
+
+
+        select option {
+            color: #000000;
+            background: #ffffff;
+        }
+
+
+        textarea {
+
+            min-height: 110px;
+
+            resize: vertical;
+        }
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            margin-top: 8px;
+
+            border-radius: 10px;
+
+            background: #365c48;
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .submit-btn:hover {
+
+            transform: translateY(-1px);
+
+            background: #416f57;
+        }
+
+
+        .submit-btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        .privacy {
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: #78887e;
+        }
+
+
+        .message {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 20px 0;
+        }
+
+
+        .success-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #365c48;
+
+            color: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            font-weight: bold;
+        }
+
+
+        .message h2 {
+
+            margin-bottom: 12px;
+        }
+
+
+        .message p {
+
+            color: #b7c4bb;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+
+        .continue-btn {
+
+            display: block;
+
+            text-decoration: none;
+
+            background: #ffffff;
+
+            color: #18352A;
+
+            padding: 14px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+        }
+
+
+        .error {
+
+            background: rgba(255, 70, 70, 0.12);
+
+            border: 1px solid rgba(255, 70, 70, 0.3);
+
+            color: #ff9b9b;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            margin-bottom: 15px;
+
+            display: none;
+
+            font-size: 13px;
+        }
+
+
+        .loading {
+
+            display: none;
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            color: #91a397;
+
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .logo h1 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="logo">
+
+        <h1>MLANGO CORE</h1>
+
+        <p>Strong Beginnings Start at the Door.</p>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <!-- FORM -->
+
+        <div id="formSection">
+
+
+            <div class="heading">
+
+                <h2>Expo Visitor Registration</h2>
+
+                <p>
+                    Tell us a little about yourself and what
+                    you're looking for. Our team will be able
+                    to assist you after the expo.
+                </p>
+
+            </div>
+
+
+            <div id="errorMessage" class="error"></div>
+
+
+            <form id="expoForm">
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>
+                        Email Address
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@company.com"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="07XX XXX XXX"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- COMPANY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Company / Organisation
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        placeholder="Company or organisation"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- INTEREST -->
+
+                <div class="form-group">
+
+                    <label>
+                        What are you interested in?
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="interest"
+                        name="interest"
+                        required
+                    >
+
+                        <option value="">
+                            Select an option
+                        </option>
+
+                        <option value="Doors">
+                            Doors
+                        </option>
+
+                        <option value="Kitchen Cabinets">
+                            Kitchen Cabinets
+                        </option>
+
+                        <option value="Wardrobes">
+                            Wardrobes
+                        </option>
+
+                        <option value="Prefabricated Housing">
+                            Prefabricated Housing
+                        </option>
+
+                        <option value="Interior Design">
+                            Interior Design
+                        </option>
+
+                        <option value="Joinery">
+                            Joinery
+                        </option>
+
+                        <option value="Commercial Project">
+                            Commercial Project
+                        </option>
+
+                        <option value="Residential Project">
+                            Residential Project
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ENQUIRY - OPTIONAL -->
+
+                <div class="form-group">
+
+                    <label for="requirement">
+                        Enquiry
+                    </label>
+
+                    <textarea
+                        id="requirement"
+                        name="requirement"
+                        placeholder="Tell us briefly about your project or what you need..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- TIMELINE -->
+
+                <div class="form-group">
+
+                    <label>
+                        How soon are you looking to engage?
+                    </label>
+
+                    <select
+                        id="timeline"
+                        name="timeline"
+                    >
+
+                        <option value="">
+                            Select timeframe
+                        </option>
+
+                        <option value="Immediately">
+                            Immediately
+                        </option>
+
+                        <option value="Within 1 month">
+                            Within 1 month
+                        </option>
+
+                        <option value="1 - 3 months">
+                            1 - 3 months
+                        </option>
+
+                        <option value="3 - 6 months">
+                            3 - 6 months
+                        </option>
+
+                        <option value="Researching">
+                            Just researching
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitButton"
+                >
+                    SUBMIT & CONTINUE
+                </button>
+
+
+                <div
+                    class="loading"
+                    id="loading"
+                >
+                    Submitting your enquiry...
+                </div>
+
+
+                <div class="privacy">
+                    Your information will only be used by Mlango Core
+                    to respond to your enquiry.
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div
+            id="successSection"
+            class="message"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                Thank You
+                <span id="visitorName"></span>
+            </h2>
+
+
+            <p>
+                Your enquiry has been successfully received.
+                You can now explore Mlango Core's catalogues,
+                services and other information.
+            </p>
+
+
+            <a
+                href="https://linktr.ee/mlango_core"
+                class="continue-btn"
+            >
+                CONTINUE TO MLANGO CORE
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+     * GOOGLE APPS SCRIPT WEB APP
+     */
+
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
+
+
+    const form =
+        document.getElementById("expoForm");
+
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    const loading =
+        document.getElementById("loading");
+
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+
+    form.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            errorMessage.style.display = "none";
+
+            submitButton.disabled = true;
+
+            loading.style.display = "block";
+
+
+            const data = {
+
+                name:
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim(),
+
+                email:
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim(),
+
+                phone:
+                    document
+                        .getElementById("phone")
+                        .value
+                        .trim(),
+
+                company:
+                    document
+                        .getElementById("company")
+                        .value
+                        .trim(),
+
+                interest:
+                    document
+                        .getElementById("interest")
+                        .value,
+
+                requirement:
+                    document
+                        .getElementById("requirement")
+                        .value
+                        .trim(),
+
+                timeline:
+                    document
+                        .getElementById("timeline")
+                        .value,
+
+                source:
+                    "EXPO QR",
+
+                campaign:
+                    "MLANGO CORE EXPO"
+
+            };
+
+
+            try {
+
+                /*
+                 * Send data to Google Apps Script.
+                 *
+                 * Apps Script receives these values through
+                 * e.parameter.
+                 */
+
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+                            "Content-Type":
+                                "application/x-www-form-urlencoded"
+                        },
+
+                        body:
+                            new URLSearchParams(data)
+                    }
+                );
+
+
+                /*
+                 * The browser cannot read the Apps Script
+                 * response because this is a cross-origin
+                 * no-cors request.
+                 *
+                 * The actual database write is performed
+                 * by doPost() in Apps Script.
+                 */
+
+                document
+                    .getElementById("formSection")
+                    .style.display = "none";
+
+
+                document
+                    .getElementById("successSection")
+                    .style.display = "block";
+
+
+                document
+                    .getElementById("visitorName")
+                    .textContent =
+                    ", " + data.name;
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                errorMessage.textContent =
+                    "We couldn't submit your information. Please try again.";
+
+
+                errorMessage.style.display = "block";
+
+
+                submitButton.disabled = false;
+
+                loading.style.display = "none";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
+```
