@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#07111f">
+    <meta name="theme-color" content="#7A4E27">
 
     <title>Expo Visitor Registration | Mlango Core</title>
 
@@ -17,16 +17,56 @@
             padding: 0;
         }
 
+        :root {
+            --orange: #F4711E;
+            --orange-dark: #D85F0F;
+            --pine-pale: #EFD9B8;
+            --pine-light: #D9A567;
+            --pine-mid: #B87F44;
+            --pine-deep: #7A4E27;
+            --pine-darkest: #4A2E17;
+            --near-black: #1C140D;
+            --cream: #FBF3E6;
+            --text-muted: #6B4F35;
+            --border-soft: rgba(74, 46, 23, 0.18);
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background:
-                linear-gradient(
-                    rgba(4, 10, 20, 0.94),
-                    rgba(4, 10, 20, 0.97)
-                ),
-                #07111f;
 
-            color: #ffffff;
+            background:
+                repeating-linear-gradient(
+                    100deg,
+                    rgba(255, 255, 255, 0.05) 0px,
+                    rgba(255, 255, 255, 0.05) 2px,
+                    transparent 2px,
+                    transparent 7px
+                ),
+                repeating-linear-gradient(
+                    100deg,
+                    rgba(0, 0, 0, 0.04) 0px,
+                    rgba(0, 0, 0, 0.04) 1px,
+                    transparent 1px,
+                    transparent 12px
+                ),
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(74, 46, 23, 0.25),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(74, 46, 23, 0.22),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    160deg,
+                    var(--pine-light) 0%,
+                    var(--pine-mid) 45%,
+                    var(--pine-deep) 100%
+                );
+
+            color: var(--near-black);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -44,26 +84,46 @@
             margin-bottom: 25px;
         }
 
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .logo-mark svg {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+        }
+
         .logo h1 {
             font-size: 30px;
             letter-spacing: 3px;
-            font-weight: 700;
+            font-weight: 800;
+            color: var(--near-black);
+        }
+
+        .logo h1 span {
+            color: var(--orange);
         }
 
         .logo p {
-            margin-top: 8px;
-            color: #aeb8c7;
-            font-size: 13px;
-            letter-spacing: 1px;
+            margin-top: 6px;
+            color: var(--pine-darkest);
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--cream);
+            border: 1px solid var(--border-soft);
             border-radius: 18px;
             padding: 30px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 20px 60px rgba(30, 17, 6, 0.35);
         }
 
         .heading {
@@ -74,10 +134,11 @@
         .heading h2 {
             font-size: 24px;
             margin-bottom: 10px;
+            color: var(--near-black);
         }
 
         .heading p {
-            color: #b9c2ce;
+            color: var(--text-muted);
             font-size: 14px;
             line-height: 1.6;
         }
@@ -90,12 +151,12 @@
             display: block;
             margin-bottom: 7px;
             font-size: 13px;
-            font-weight: 600;
-            color: #dce3eb;
+            font-weight: 700;
+            color: var(--near-black);
         }
 
         .required {
-            color: #00c8ff;
+            color: var(--orange);
         }
 
         input,
@@ -104,9 +165,9 @@
             width: 100%;
             padding: 13px 14px;
             border-radius: 9px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(0, 0, 0, 0.25);
-            color: #ffffff;
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+            color: var(--near-black);
             font-size: 15px;
             outline: none;
             transition: 0.2s;
@@ -115,13 +176,13 @@
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: #00c8ff;
-            box-shadow: 0 0 0 2px rgba(0, 200, 255, 0.12);
+            border-color: var(--orange);
+            box-shadow: 0 0 0 2px rgba(244, 113, 30, 0.18);
         }
 
         input::placeholder,
         textarea::placeholder {
-            color: #7e8998;
+            color: #9c8a76;
         }
 
         select {
@@ -150,7 +211,7 @@
             gap: 8px;
             padding: 10px;
             border-radius: 8px;
-            background: rgba(255,255,255,0.04);
+            background: rgba(74, 46, 23, 0.05);
         }
 
         .checkbox-item input {
@@ -169,17 +230,18 @@
             padding: 15px;
             margin-top: 8px;
             border-radius: 10px;
-            background: #00c8ff;
-            color: #04101b;
+            background: var(--orange);
+            color: #ffffff;
             font-size: 16px;
             font-weight: 700;
+            letter-spacing: 0.5px;
             cursor: pointer;
             transition: 0.2s;
         }
 
         .submit-btn:hover {
+            background: var(--orange-dark);
             transform: translateY(-1px);
-            opacity: 0.92;
         }
 
         .submit-btn:disabled {
@@ -193,7 +255,7 @@
             text-align: center;
             font-size: 11px;
             line-height: 1.5;
-            color: #7f8997;
+            color: var(--text-muted);
         }
 
         .message {
@@ -207,8 +269,8 @@
             height: 65px;
             margin: 0 auto 20px;
             border-radius: 50%;
-            background: #00c8ff;
-            color: #04101b;
+            background: var(--orange);
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -218,10 +280,11 @@
 
         .message h2 {
             margin-bottom: 12px;
+            color: var(--near-black);
         }
 
         .message p {
-            color: #b9c2ce;
+            color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 25px;
         }
@@ -229,17 +292,21 @@
         .continue-btn {
             display: block;
             text-decoration: none;
-            background: #ffffff;
-            color: #07111f;
+            background: var(--near-black);
+            color: #ffffff;
             padding: 14px;
             border-radius: 9px;
             font-weight: 700;
         }
 
+        .continue-btn:hover {
+            background: var(--pine-darkest);
+        }
+
         .error {
-            background: rgba(255, 70, 70, 0.12);
-            border: 1px solid rgba(255, 70, 70, 0.3);
-            color: #ff9b9b;
+            background: rgba(217, 60, 20, 0.1);
+            border: 1px solid rgba(217, 60, 20, 0.3);
+            color: #9c2c0e;
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 15px;
@@ -251,7 +318,7 @@
             display: none;
             text-align: center;
             margin-top: 15px;
-            color: #9da9b8;
+            color: var(--text-muted);
             font-size: 13px;
         }
 
@@ -281,8 +348,22 @@
 <div class="container">
 
     <div class="logo">
-        <h1>MLANGO CORE</h1>
-        <p>INTERIOR DESIGN & BUILD</p>
+
+        <div class="logo-mark">
+
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,8 78,18 78,86 40,96" fill="#F4711E"></polygon>
+                <polygon points="40,8 78,18 66,22 40,15" fill="#D85F0F"></polygon>
+                <circle cx="63" cy="52" r="4.5" fill="#1C140D"></circle>
+                <polygon points="22,20 40,8 40,96 22,84" fill="#1C140D"></polygon>
+            </svg>
+
+            <h1>MLANGO <span>CORE</span></h1>
+
+        </div>
+
+        <p>STRONG BEGINNINGS. START AT THE DOOR.</p>
+
     </div>
 
     <div class="card">
@@ -395,12 +476,16 @@
                             Doors
                         </option>
 
-                        <option value="Kitchens">
-                            Kitchens
+                        <option value="Kitchen Cabinets">
+                            Kitchen Cabinets
                         </option>
 
                         <option value="Wardrobes">
                             Wardrobes
+                        </option>
+
+                        <option value="Prefabricated Housing">
+                            Prefabricated Housing
                         </option>
 
                         <option value="Interior Design">
@@ -409,10 +494,6 @@
 
                         <option value="Joinery">
                             Joinery
-                        </option>
-
-                        <option value="Prefabricated Housing">
-                            Prefabricated Housing
                         </option>
 
                         <option value="Commercial Project">
@@ -435,15 +516,13 @@
                 <div class="form-group">
 
                     <label>
-                        What do you need from Mlango Core?
-                        <span class="required">*</span>
+                        Enquiry
                     </label>
 
                     <textarea
                         id="requirement"
                         name="requirement"
-                        placeholder="Tell us briefly about your project or what you need..."
-                        required
+                        placeholder="Tell us briefly about your project or what you need (optional)..."
                     ></textarea>
 
                 </div>
@@ -555,7 +634,7 @@
     /*
      * GOOGLE APPS SCRIPT WEB APP URL
      *
-     * Replace this with your deployed Apps Script URL.
+     * Deployment ID: AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3
      */
     const GOOGLE_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
@@ -586,10 +665,42 @@
         loading.style.display = "block";
 
 
+        const fullName =
+            document.getElementById("name").value.trim();
+
+        /*
+         * NOTE ON THE "NAME NOT SAVING" ISSUE:
+         *
+         * This form already sends the full name correctly under
+         * the key "name". If it is still not landing in the
+         * Google Sheet while every other field does, the mismatch
+         * is almost certainly happening inside the Apps Script
+         * (Code.gs) doPost() function — e.g. it may be reading
+         * e.parameter.Name, e.parameter.fullName, or writing to
+         * the wrong column/index in appendRow().
+         *
+         * As a safety net, the name is sent below under several
+         * common key variants so it matches regardless of what
+         * the script expects. Once you confirm the exact key your
+         * Code.gs reads, you can safely remove the extra aliases.
+         */
+
         const data = {
 
             name:
-                document.getElementById("name").value.trim(),
+                fullName,
+
+            Name:
+                fullName,
+
+            fullName:
+                fullName,
+
+            full_name:
+                fullName,
+
+            timestamp:
+                new Date().toISOString(),
 
             email:
                 document.getElementById("email").value.trim(),
@@ -652,7 +763,7 @@
 
             document.getElementById("visitorName")
                 .textContent =
-                ", " + data.name;
+                ", " + fullName;
 
 
         } catch (error) {
