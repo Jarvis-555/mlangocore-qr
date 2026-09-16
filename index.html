@@ -1,18 +1,16 @@
-```html
+html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#18352A">
 
     <title>Expo Visitor Registration | Mlango Core</title>
-
 
     <style>
 
@@ -22,156 +20,108 @@
             padding: 0;
         }
 
-
         body {
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 
             background:
                 radial-gradient(
                     circle at top,
-                    #262626 0%,
-                    #111111 42%,
-                    #000000 100%
-                );
+                    rgba(42, 78, 61, 0.30),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    rgba(10, 22, 17, 0.96),
+                    rgba(7, 16, 12, 0.98)
+                ),
+                #0a1611;
 
             color: #ffffff;
 
             min-height: 100vh;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             padding: 25px;
-
         }
 
 
         .container {
-
             width: 100%;
-
             max-width: 520px;
-
         }
 
 
-        /* =========================
-           LOGO
-           ========================= */
-
         .logo {
-
             text-align: center;
-
             margin-bottom: 25px;
-
         }
 
 
         .logo h1 {
-
             font-size: 30px;
-
             letter-spacing: 3px;
-
             font-weight: 700;
-
         }
 
 
         .logo p {
-
             margin-top: 8px;
 
-            color: #b3b3b3;
+            color: #b8c9bd;
 
             font-size: 13px;
+            letter-spacing: 0.8px;
 
-            letter-spacing: 1px;
-
+            font-style: italic;
         }
 
 
-        /* =========================
-           CARD
-           ========================= */
-
         .card {
 
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.055);
 
-            border:
-                1px solid
-                rgba(255,255,255,0.16);
+            border: 1px solid rgba(188, 213, 195, 0.18);
 
             border-radius: 18px;
 
             padding: 30px;
 
-            backdrop-filter: blur(18px);
-
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(15px);
 
             box-shadow:
-                0 20px 60px
-                rgba(0,0,0,0.45);
-
+                0 20px 60px rgba(0, 0, 0, 0.45);
         }
 
 
-        /* =========================
-           HEADING
-           ========================= */
-
         .heading {
-
             text-align: center;
-
             margin-bottom: 25px;
-
         }
 
 
         .heading h2 {
-
             font-size: 24px;
-
             margin-bottom: 10px;
-
         }
 
 
         .heading p {
-
-            color: #bdbdbd;
+            color: #b7c4bb;
 
             font-size: 14px;
 
             line-height: 1.6;
-
         }
 
 
-        /* =========================
-           FORM
-           ========================= */
-
         .form-group {
-
             margin-bottom: 18px;
-
         }
 
 
         label {
-
             display: block;
 
             margin-bottom: 7px;
@@ -180,15 +130,12 @@
 
             font-weight: 600;
 
-            color: #eeeeee;
-
+            color: #dce5df;
         }
 
 
         .required {
-
-            color: #ffffff;
-
+            color: #8fb89f;
         }
 
 
@@ -202,12 +149,9 @@
 
             border-radius: 9px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.18);
+            border: 1px solid rgba(190, 215, 198, 0.18);
 
-            background:
-                rgba(255,255,255,0.08);
+            background: rgba(0, 0, 0, 0.28);
 
             color: #ffffff;
 
@@ -216,7 +160,6 @@
             outline: none;
 
             transition: 0.2s;
-
         }
 
 
@@ -224,51 +167,37 @@
         select:focus,
         textarea:focus {
 
-            border-color: #ffffff;
+            border-color: #739b82;
 
             box-shadow:
-                0 0 0 2px
-                rgba(255,255,255,0.10);
-
+                0 0 0 2px rgba(115, 155, 130, 0.14);
         }
 
 
         input::placeholder,
         textarea::placeholder {
-
-            color: #858585;
-
+            color: #7f9186;
         }
 
 
         select {
-
             cursor: pointer;
-
         }
 
 
         select option {
-
             color: #000000;
-
             background: #ffffff;
-
         }
 
 
         textarea {
 
-            min-height: 120px;
+            min-height: 110px;
 
             resize: vertical;
-
         }
 
-
-        /* =========================
-           SUBMIT BUTTON
-           ========================= */
 
         .submit-btn {
 
@@ -282,9 +211,9 @@
 
             border-radius: 10px;
 
-            background: #ffffff;
+            background: #365c48;
 
-            color: #000000;
+            color: #ffffff;
 
             font-size: 16px;
 
@@ -293,7 +222,6 @@
             cursor: pointer;
 
             transition: 0.2s;
-
         }
 
 
@@ -301,25 +229,19 @@
 
             transform: translateY(-1px);
 
-            opacity: 0.90;
-
+            background: #416f57;
         }
 
 
         .submit-btn:disabled {
 
-            opacity: 0.50;
+            opacity: 0.5;
 
             cursor: not-allowed;
 
             transform: none;
-
         }
 
-
-        /* =========================
-           PRIVACY
-           ========================= */
 
         .privacy {
 
@@ -331,14 +253,9 @@
 
             line-height: 1.5;
 
-            color: #777777;
-
+            color: #78887e;
         }
 
-
-        /* =========================
-           SUCCESS
-           ========================= */
 
         .message {
 
@@ -347,7 +264,6 @@
             text-align: center;
 
             padding: 20px 0;
-
         }
 
 
@@ -361,9 +277,9 @@
 
             border-radius: 50%;
 
-            background: #ffffff;
+            background: #365c48;
 
-            color: #000000;
+            color: #ffffff;
 
             display: flex;
 
@@ -374,25 +290,22 @@
             font-size: 30px;
 
             font-weight: bold;
-
         }
 
 
         .message h2 {
 
             margin-bottom: 12px;
-
         }
 
 
         .message p {
 
-            color: #b9b9b9;
+            color: #b7c4bb;
 
             line-height: 1.6;
 
             margin-bottom: 25px;
-
         }
 
 
@@ -404,29 +317,21 @@
 
             background: #ffffff;
 
-            color: #000000;
+            color: #18352A;
 
             padding: 14px;
 
             border-radius: 9px;
 
             font-weight: 700;
-
         }
 
 
-        /* =========================
-           ERROR
-           ========================= */
-
         .error {
 
-            background:
-                rgba(255,70,70,0.12);
+            background: rgba(255, 70, 70, 0.12);
 
-            border:
-                1px solid
-                rgba(255,70,70,0.30);
+            border: 1px solid rgba(255, 70, 70, 0.3);
 
             color: #ff9b9b;
 
@@ -439,13 +344,8 @@
             display: none;
 
             font-size: 13px;
-
         }
 
-
-        /* =========================
-           LOADING
-           ========================= */
 
         .loading {
 
@@ -455,37 +355,24 @@
 
             margin-top: 15px;
 
-            color: #9d9d9d;
+            color: #91a397;
 
             font-size: 13px;
-
         }
 
-
-        /* =========================
-           MOBILE
-           ========================= */
 
         @media (max-width: 500px) {
 
             body {
-
                 padding: 15px;
-
             }
-
 
             .card {
-
                 padding: 22px;
-
             }
 
-
             .logo h1 {
-
                 font-size: 25px;
-
             }
 
         }
@@ -501,73 +388,49 @@
 <div class="container">
 
 
-    <!-- =========================
-         BRANDING
-         ========================= -->
-
     <div class="logo">
 
         <h1>MLANGO CORE</h1>
 
-        <p>INTERIOR DESIGN & BUILD</p>
+        <p>Strong Beginnings Start at the Door.</p>
 
     </div>
 
 
-
-    <!-- =========================
-         CARD
-         ========================= -->
-
     <div class="card">
 
 
-        <!-- =========================
-             FORM SECTION
-             ========================= -->
+        <!-- FORM -->
 
         <div id="formSection">
 
 
             <div class="heading">
 
-                <h2>
-                    Expo Visitor Registration
-                </h2>
+                <h2>Expo Visitor Registration</h2>
 
                 <p>
-                    Tell us a little about yourself
-                    and what you're looking for.
-                    Our team will be able to assist
-                    you after the expo.
+                    Tell us a little about yourself and what
+                    you're looking for. Our team will be able
+                    to assist you after the expo.
                 </p>
 
             </div>
 
 
-
-            <div
-                id="errorMessage"
-                class="error"
-            ></div>
-
+            <div id="errorMessage" class="error"></div>
 
 
             <form id="expoForm">
 
 
-                <!-- NAME -->
+                <!-- FULL NAME -->
 
                 <div class="form-group">
 
-                    <label for="name">
-
+                    <label>
                         Full Name
-
-                        <span class="required">
-                            *
-                        </span>
-
+                        <span class="required">*</span>
                     </label>
 
                     <input
@@ -575,26 +438,19 @@
                         id="name"
                         name="name"
                         placeholder="Your full name"
-                        autocomplete="name"
                         required
                     >
 
                 </div>
 
 
-
                 <!-- EMAIL -->
 
                 <div class="form-group">
 
-                    <label for="email">
-
+                    <label>
                         Email Address
-
-                        <span class="required">
-                            *
-                        </span>
-
+                        <span class="required">*</span>
                     </label>
 
                     <input
@@ -602,26 +458,19 @@
                         id="email"
                         name="email"
                         placeholder="you@company.com"
-                        autocomplete="email"
                         required
                     >
 
                 </div>
 
 
-
                 <!-- PHONE -->
 
                 <div class="form-group">
 
-                    <label for="phone">
-
+                    <label>
                         Phone Number
-
-                        <span class="required">
-                            *
-                        </span>
-
+                        <span class="required">*</span>
                     </label>
 
                     <input
@@ -629,26 +478,19 @@
                         id="phone"
                         name="phone"
                         placeholder="07XX XXX XXX"
-                        autocomplete="tel"
                         required
                     >
 
                 </div>
 
 
-
                 <!-- COMPANY -->
 
                 <div class="form-group">
 
-                    <label for="company">
-
+                    <label>
                         Company / Organisation
-
-                        <span class="required">
-                            *
-                        </span>
-
+                        <span class="required">*</span>
                     </label>
 
                     <input
@@ -656,30 +498,20 @@
                         id="company"
                         name="company"
                         placeholder="Company or organisation"
-                        autocomplete="organization"
                         required
                     >
 
                 </div>
 
 
-
-                <!-- =========================
-                     INTEREST
-                     ========================= -->
+                <!-- INTEREST -->
 
                 <div class="form-group">
 
-                    <label for="interest">
-
+                    <label>
                         What are you interested in?
-
-                        <span class="required">
-                            *
-                        </span>
-
+                        <span class="required">*</span>
                     </label>
-
 
                     <select
                         id="interest"
@@ -691,46 +523,37 @@
                             Select an option
                         </option>
 
-
                         <option value="Doors">
                             Doors
                         </option>
-
 
                         <option value="Kitchen Cabinets">
                             Kitchen Cabinets
                         </option>
 
-
                         <option value="Wardrobes">
                             Wardrobes
                         </option>
-
 
                         <option value="Prefabricated Housing">
                             Prefabricated Housing
                         </option>
 
-
                         <option value="Interior Design">
                             Interior Design
                         </option>
-
 
                         <option value="Joinery">
                             Joinery
                         </option>
 
-
                         <option value="Commercial Project">
                             Commercial Project
                         </option>
 
-
                         <option value="Residential Project">
                             Residential Project
                         </option>
-
 
                         <option value="Other">
                             Other
@@ -741,20 +564,13 @@
                 </div>
 
 
-
-                <!-- =========================
-                     ENQUIRY
-                     OPTIONAL
-                     ========================= -->
+                <!-- ENQUIRY - OPTIONAL -->
 
                 <div class="form-group">
 
                     <label for="requirement">
-
                         Enquiry
-
                     </label>
-
 
                     <textarea
                         id="requirement"
@@ -765,19 +581,13 @@
                 </div>
 
 
-
-                <!-- =========================
-                     TIMELINE
-                     ========================= -->
+                <!-- TIMELINE -->
 
                 <div class="form-group">
 
-                    <label for="timeline">
-
+                    <label>
                         How soon are you looking to engage?
-
                     </label>
-
 
                     <select
                         id="timeline"
@@ -788,26 +598,21 @@
                             Select timeframe
                         </option>
 
-
                         <option value="Immediately">
                             Immediately
                         </option>
-
 
                         <option value="Within 1 month">
                             Within 1 month
                         </option>
 
-
                         <option value="1 - 3 months">
                             1 - 3 months
                         </option>
 
-
                         <option value="3 - 6 months">
                             3 - 6 months
                         </option>
-
 
                         <option value="Researching">
                             Just researching
@@ -818,10 +623,7 @@
                 </div>
 
 
-
-                <!-- =========================
-                     SUBMIT
-                     ========================= -->
+                <!-- SUBMIT -->
 
                 <button
                     type="submit"
@@ -841,10 +643,8 @@
 
 
                 <div class="privacy">
-
-                    Your information will only be used
-                    by Mlango Core to respond to your enquiry.
-
+                    Your information will only be used by Mlango Core
+                    to respond to your enquiry.
                 </div>
 
 
@@ -854,16 +654,12 @@
         </div>
 
 
-
-        <!-- =========================
-             SUCCESS SECTION
-             ========================= -->
+        <!-- SUCCESS MESSAGE -->
 
         <div
             id="successSection"
             class="message"
         >
-
 
             <div class="success-icon">
                 ✓
@@ -871,20 +667,15 @@
 
 
             <h2>
-
                 Thank You
                 <span id="visitorName"></span>
-
             </h2>
 
 
             <p>
-
-                Your enquiry has been successfully
-                received. You can now explore
-                Mlango Core's catalogues, services
-                and other information.
-
+                Your enquiry has been successfully received.
+                You can now explore Mlango Core's catalogues,
+                services and other information.
             </p>
 
 
@@ -905,22 +696,16 @@
 </div>
 
 
-
 <script>
 
 
-    /* ==========================================================
-       GOOGLE APPS SCRIPT WEB APP
-       ========================================================== */
+    /*
+     * GOOGLE APPS SCRIPT WEB APP
+     */
 
     const GOOGLE_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
 
-
-
-    /* ==========================================================
-       FORM ELEMENTS
-       ========================================================== */
 
     const form =
         document.getElementById("expoForm");
@@ -938,34 +723,19 @@
         document.getElementById("errorMessage");
 
 
-
-    /* ==========================================================
-       SUBMIT
-       ========================================================== */
-
     form.addEventListener(
         "submit",
-        function(event) {
+        async function(event) {
 
             event.preventDefault();
 
 
-            errorMessage.style.display =
-                "none";
+            errorMessage.style.display = "none";
 
+            submitButton.disabled = true;
 
-            submitButton.disabled =
-                true;
+            loading.style.display = "block";
 
-
-            loading.style.display =
-                "block";
-
-
-
-            /* ==================================================
-               COLLECT FORM DATA
-               ================================================== */
 
             const data = {
 
@@ -1018,171 +788,78 @@
             };
 
 
+            try {
 
-            /* ==================================================
-               VALIDATION
-               ================================================== */
+                /*
+                 * Send data to Google Apps Script.
+                 *
+                 * Apps Script receives these values through
+                 * e.parameter.
+                 */
 
-            if (
-                !data.name ||
-                !data.email ||
-                !data.phone ||
-                !data.company ||
-                !data.interest
-            ) {
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+                        method: "POST",
 
-                showError(
-                    "Please complete all required fields."
+                        mode: "no-cors",
+
+                        headers: {
+                            "Content-Type":
+                                "application/x-www-form-urlencoded"
+                        },
+
+                        body:
+                            new URLSearchParams(data)
+                    }
                 );
 
-                return;
+
+                /*
+                 * The browser cannot read the Apps Script
+                 * response because this is a cross-origin
+                 * no-cors request.
+                 *
+                 * The actual database write is performed
+                 * by doPost() in Apps Script.
+                 */
+
+                document
+                    .getElementById("formSection")
+                    .style.display = "none";
+
+
+                document
+                    .getElementById("successSection")
+                    .style.display = "block";
+
+
+                document
+                    .getElementById("visitorName")
+                    .textContent =
+                    ", " + data.name;
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                errorMessage.textContent =
+                    "We couldn't submit your information. Please try again.";
+
+
+                errorMessage.style.display = "block";
+
+
+                submitButton.disabled = false;
+
+                loading.style.display = "none";
 
             }
 
-
-
-            /* ==================================================
-               SUBMIT TO GOOGLE APPS SCRIPT
-               ==================================================
-
-               URLSearchParams produces the normal
-               application/x-www-form-urlencoded format
-               expected by Apps Script e.parameter.
-
-               Google Apps Script web apps receive POST
-               requests through doPost(e).
-            */
-
-            const formData =
-                new URLSearchParams();
-
-
-            Object.keys(data).forEach(
-                function(key) {
-
-                    formData.append(
-                        key,
-                        data[key]
-                    );
-
-                }
-            );
-
-
-
-            fetch(
-                GOOGLE_SCRIPT_URL,
-                {
-
-                    method: "POST",
-
-                    mode: "no-cors",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/x-www-form-urlencoded"
-
-                    },
-
-                    body:
-                        formData.toString()
-
-                }
-            )
-
-            .then(
-                function() {
-
-                    /*
-                     * no-cors prevents the browser
-                     * from reading the Apps Script
-                     * response. The POST itself is sent.
-                     */
-
-                    showSuccess(
-                        data.name
-                    );
-
-                }
-            )
-
-            .catch(
-                function(error) {
-
-                    console.error(
-                        "Submission error:",
-                        error
-                    );
-
-                    showError(
-                        "We couldn't submit your information. Please try again."
-                    );
-
-                }
-            );
-
         }
     );
-
-
-
-    /* ==========================================================
-       SUCCESS
-       ========================================================== */
-
-    function showSuccess(name) {
-
-        document
-            .getElementById("formSection")
-            .style.display = "none";
-
-
-        document
-            .getElementById("successSection")
-            .style.display = "block";
-
-
-        document
-            .getElementById("visitorName")
-            .textContent =
-                ", " + name;
-
-
-        submitButton.disabled =
-            false;
-
-
-        loading.style.display =
-            "none";
-
-    }
-
-
-
-    /* ==========================================================
-       ERROR
-       ========================================================== */
-
-    function showError(message) {
-
-        errorMessage.textContent =
-            message;
-
-
-        errorMessage.style.display =
-            "block";
-
-
-        submitButton.disabled =
-            false;
-
-
-        loading.style.display =
-            "none";
-
-    }
-
 
 </script>
 
@@ -1190,4 +867,3 @@
 </body>
 
 </html>
-```
