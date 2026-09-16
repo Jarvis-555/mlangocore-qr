@@ -580,7 +580,7 @@
     /*
      * GOOGLE APPS SCRIPT WEB APP URL
      *
-     * Deployment ID: AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3
+     * Replace this with your deployed Apps Script URL.
      */
     const GOOGLE_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
@@ -611,42 +611,10 @@
         loading.style.display = "block";
 
 
-        const fullName =
-            document.getElementById("name").value.trim();
-
-        /*
-         * NOTE ON THE "NAME NOT SAVING" ISSUE:
-         *
-         * This form already sends the full name correctly under
-         * the key "name". If it is still not landing in the
-         * Google Sheet while every other field does, the mismatch
-         * is almost certainly happening inside the Apps Script
-         * (Code.gs) doPost() function — e.g. it may be reading
-         * e.parameter.Name, e.parameter.fullName, or writing to
-         * the wrong column/index in appendRow().
-         *
-         * As a safety net, the name is sent below under several
-         * common key variants so it matches regardless of what
-         * the script expects. Once you confirm the exact key your
-         * Code.gs reads, you can safely remove the extra aliases.
-         */
-
         const data = {
 
             name:
-                fullName,
-
-            Name:
-                fullName,
-
-            fullName:
-                fullName,
-
-            full_name:
-                fullName,
-
-            timestamp:
-                new Date().toISOString(),
+                document.getElementById("name").value.trim(),
 
             email:
                 document.getElementById("email").value.trim(),
@@ -709,7 +677,7 @@
 
             document.getElementById("visitorName")
                 .textContent =
-                ", " + fullName;
+                ", " + data.name;
 
 
         } catch (error) {
