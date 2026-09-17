@@ -236,6 +236,198 @@
         }
 
 
+        /* ==========================================
+           MULTI-SELECT INTEREST DROPDOWN
+           ========================================== */
+
+        .multi-select {
+
+            position: relative;
+
+            width: 100%;
+        }
+
+
+        .multi-select-button {
+
+            width: 100%;
+
+            min-height: 50px;
+
+            padding: 14px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            background:
+                rgba(0, 0, 0, 0.25);
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            transition: 0.2s;
+        }
+
+
+        .multi-select-button:hover,
+        .multi-select.open
+        .multi-select-button {
+
+            border-color: #00c8ff;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(0, 200, 255, 0.12);
+        }
+
+
+        .multi-select-arrow {
+
+            font-size: 12px;
+
+            color: #00c8ff;
+
+            flex-shrink: 0;
+
+            transition: transform 0.2s;
+        }
+
+
+        .multi-select.open
+        .multi-select-arrow {
+
+            transform: rotate(180deg);
+        }
+
+
+        .multi-select-placeholder {
+
+            color: #7e8998;
+        }
+
+
+        .multi-select-options {
+
+            display: none;
+
+            position: absolute;
+
+            z-index: 1000;
+
+            top: calc(100% + 6px);
+
+            left: 0;
+
+            width: 100%;
+
+            max-height: 280px;
+
+            overflow-y: auto;
+
+            background: #101b2b;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.45);
+
+            padding: 6px;
+        }
+
+
+        .multi-select.open
+        .multi-select-options {
+
+            display: block;
+        }
+
+
+        .multi-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 10px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            transition: 0.15s;
+        }
+
+
+        .multi-option:hover {
+
+            background:
+                rgba(0, 200, 255, 0.08);
+        }
+
+
+        .multi-option input {
+
+            width: 18px;
+
+            height: 18px;
+
+            margin: 0;
+
+            padding: 0;
+
+            accent-color: #00c8ff;
+
+            cursor: pointer;
+
+            flex-shrink: 0;
+        }
+
+
+        .selected-count {
+
+            color: #00c8ff;
+
+            font-size: 12px;
+
+            margin-top: 6px;
+
+            display: none;
+        }
+
+
+        .selected-count.visible {
+
+            display: block;
+        }
+
+
         .submit-btn {
 
             width: 100%;
@@ -584,52 +776,177 @@
                         What are you interested in?
                     </label>
 
-                    <select
-                        id="interest"
-                        name="interest"
+
+                    <div
+                        class="multi-select"
+                        id="interestMultiSelect"
                     >
 
-                        <option value="">
-                            Select an option
-                        </option>
 
-                        <option value="Doors">
-                            Doors
-                        </option>
+                        <button
+                            type="button"
+                            class="multi-select-button"
+                            id="interestButton"
+                        >
 
-                        <option value="Kitchen Cabinets">
-                            Kitchen Cabinets
-                        </option>
+                            <span
+                                id="interestDisplay"
+                                class="multi-select-placeholder"
+                            >
+                                Select one or more options
+                            </span>
 
-                        <option value="Wardrobes">
-                            Wardrobes
-                        </option>
+                            <span
+                                class="multi-select-arrow"
+                            >
+                                ▼
+                            </span>
 
-                        <option value="Prefabricated Housing">
-                            Prefabricated Housing
-                        </option>
+                        </button>
 
-                        <option value="Interior Design">
-                            Interior Design
-                        </option>
 
-                        <option value="Joinery">
-                            Joinery
-                        </option>
+                        <div
+                            class="multi-select-options"
+                            id="interestOptions"
+                        >
 
-                        <option value="Commercial Project">
-                            Commercial Project
-                        </option>
 
-                        <option value="Residential Project">
-                            Residential Project
-                        </option>
+                            <label class="multi-option">
 
-                        <option value="Other">
-                            Other
-                        </option>
+                                <input
+                                    type="checkbox"
+                                    value="Doors"
+                                >
 
-                    </select>
+                                <span>
+                                    Doors
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Kitchen Cabinets"
+                                >
+
+                                <span>
+                                    Kitchen Cabinets
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Wardrobes"
+                                >
+
+                                <span>
+                                    Wardrobes
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Prefabricated Housing"
+                                >
+
+                                <span>
+                                    Prefabricated Housing
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Interior Design"
+                                >
+
+                                <span>
+                                    Interior Design
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Joinery"
+                                >
+
+                                <span>
+                                    Joinery
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Commercial Project"
+                                >
+
+                                <span>
+                                    Commercial Project
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Residential Project"
+                                >
+
+                                <span>
+                                    Residential Project
+                                </span>
+
+                            </label>
+
+
+                            <label class="multi-option">
+
+                                <input
+                                    type="checkbox"
+                                    value="Other"
+                                >
+
+                                <span>
+                                    Other
+                                </span>
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="selected-count"
+                        id="selectedCount"
+                    ></div>
+
 
                 </div>
 
@@ -727,12 +1044,7 @@
 
 /* ==========================================
    GOOGLE APPS SCRIPT URL
-   ==========================================
-
-   Replace this with your actual deployed
-   Google Apps Script Web App URL.
-
-*/
+   ========================================== */
 
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbx97QEK4siRmkbG8e4l5isWY-Rcsg6txBcV6ei0rG0jiqPtApgBhTwV7K0mtvSvymv3/exec";
@@ -763,6 +1075,160 @@ const successSection =
 
 const visitorName =
     document.getElementById("visitorName");
+
+
+/* ==========================================
+   MULTI-SELECT ELEMENTS
+   ========================================== */
+
+const interestMultiSelect =
+    document.getElementById(
+        "interestMultiSelect"
+    );
+
+const interestButton =
+    document.getElementById(
+        "interestButton"
+    );
+
+const interestDisplay =
+    document.getElementById(
+        "interestDisplay"
+    );
+
+const interestOptions =
+    document.querySelectorAll(
+        '#interestOptions input[type="checkbox"]'
+    );
+
+const selectedCount =
+    document.getElementById(
+        "selectedCount"
+    );
+
+
+
+/* ==========================================
+   OPEN / CLOSE MULTI-SELECT
+   ========================================== */
+
+interestButton.addEventListener(
+    "click",
+    function() {
+
+        interestMultiSelect.classList.toggle(
+            "open"
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   UPDATE SELECTED INTERESTS
+   ========================================== */
+
+interestOptions.forEach(
+    function(option) {
+
+        option.addEventListener(
+            "change",
+            updateInterestDisplay
+        );
+
+    }
+);
+
+
+
+function updateInterestDisplay() {
+
+
+    const selected =
+        Array.from(
+            interestOptions
+        )
+        .filter(
+            function(option) {
+                return option.checked;
+            }
+        )
+        .map(
+            function(option) {
+                return option.value;
+            }
+        );
+
+
+    if (selected.length === 0) {
+
+        interestDisplay.textContent =
+            "Select one or more options";
+
+        interestDisplay.classList.add(
+            "multi-select-placeholder"
+        );
+
+        selectedCount.textContent =
+            "";
+
+        selectedCount.classList.remove(
+            "visible"
+        );
+
+        return;
+
+    }
+
+
+    interestDisplay.textContent =
+        selected.join(", ");
+
+    interestDisplay.classList.remove(
+        "multi-select-placeholder"
+    );
+
+
+    selectedCount.textContent =
+        selected.length +
+        (
+            selected.length === 1
+                ? " interest selected"
+                : " interests selected"
+        );
+
+
+    selectedCount.classList.add(
+        "visible"
+    );
+
+}
+
+
+
+/* ==========================================
+   CLOSE DROPDOWN WHEN CLICKING OUTSIDE
+   ========================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !interestMultiSelect.contains(
+                event.target
+            )
+        ) {
+
+            interestMultiSelect.classList.remove(
+                "open"
+            );
+
+        }
+
+    }
+);
 
 
 
@@ -807,6 +1273,39 @@ form.addEventListener(
 
 
         /*
+         * Collect selected interests.
+         */
+
+        const selectedInterests =
+            Array.from(
+                interestOptions
+            )
+            .filter(
+                function(option) {
+                    return option.checked;
+                }
+            )
+            .map(
+                function(option) {
+                    return option.value;
+                }
+            );
+
+
+        /*
+         * Convert multiple selections
+         * into a single readable value.
+         *
+         * Example:
+         * Doors, Wardrobes, Joinery
+         */
+
+        const interest =
+            selectedInterests.join(", ");
+
+
+
+        /*
          * Collect form information.
          */
 
@@ -837,9 +1336,7 @@ form.addEventListener(
                     .trim(),
 
             interest:
-                document
-                    .getElementById("interest")
-                    .value,
+                interest,
 
 
             source:
